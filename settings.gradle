@@ -12,4 +12,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'music-exporer'
+rootProject.name = 'music-explorer'

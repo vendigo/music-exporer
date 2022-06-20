@@ -1,4 +1,5 @@
-
+server:
+  port: ${PORT}
 
 ---
 spring.config.activate.on-profile: local-postgres
@@ -11,3 +12,6 @@ spring:
     password: testpassword
   jpa:
     generate-ddl: off
+
+server:
+  port: 8080

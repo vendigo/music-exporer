@@ -30,7 +30,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     //implementation 'com.google.cloud:spring-cloud-gcp-starter'
 
-    //runtimeOnly 'org.postgresql:postgresql'
+    runtimeOnly 'org.postgresql:postgresql'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -49,8 +49,13 @@ dependencyManagement {
 appengine {
     appengine.deploy.projectId = 'GCLOUD_CONFIG'
     appengine.deploy.version = 'GCLOUD_CONFIG'
+    appengine.stage.artifact = "build/libs/${project.name}-${project.version}.jar"
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+jar {
+    enabled = false
 }
