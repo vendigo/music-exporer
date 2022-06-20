@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Artists</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Artists</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Fans</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${artists.empty}">
+                    <td colspan="2">No artists available</td>
+                </tr>
+                <tr th:each="artist : ${artists}">
+                    <td><img th:src="${artist.picture}" th:alt="${artist.name}" /></td>
+                    <td><span th:text="${artist.name}">Name</span></td>
+                    <td><span th:text="${artist.fansCount}">Fans</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
