@@ -4,8 +4,3 @@ instance_class: F2
 handlers:
   - url: .*
     script: auto
-env_variables:
-  CLOUD_SQL_CONNECTION_NAME: learngcp-353414:europe-central2:artists-db
-  DB_USER: postgres
-  DB_PASS: "8&*$c}?2%U?j>Fy
-  DB_NAME: artists-db

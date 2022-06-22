@@ -4,11 +4,24 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql:///${DB_NAME}
-    username: ${DB_USER}
-    password: ${DB_PASS}
-  jpa:
-    generate-ddl: on
+    username: postgres
+    password: '"8&*$c}?2%U?j>Fy'
+  cloud.gcp.sql:
+    instance-connection-name: learngcp-353414:europe-central2:artists-db
+    database-name: postgres
+
+---
+spring.config.activate.on-profile: local
+
+spring.cloud.gcp:
+  sql.enabled: false
+  core.enabled: false
+
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+
+server.port: 8080
 
 ---
 spring.config.activate.on-profile: local-postgres
@@ -21,6 +34,3 @@ spring:
     password: testpassword
   jpa:
     generate-ddl: off
-
-server:
-  port: 8080
