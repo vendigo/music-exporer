@@ -20,6 +20,10 @@ spring.cloud.gcp:
 spring:
   datasource:
     driver-class-name: org.h2.Driver
+  jpa:
+    generate-ddl: off
+
+spring.liquibase.change-log: classpath:liquibase/changelog.xml
 
 server.port: 8080
 

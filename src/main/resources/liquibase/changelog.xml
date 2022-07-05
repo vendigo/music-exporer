@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+    <changeSet id="create-table-dez_artist" author="Dmytro Marchenko">
+        <createTable tableName="dez_artist">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="dez_artist_pk"/>
+            </column>
+            <column name="nb_fans" type="integer"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="picture" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="loadData-example" author="Dmytro Marchenko">
+        <loadData
+            file="artists.csv"
+            schemaName="public"
+            tableName="dez_artist"
+            relativeToChangelogFile="true"
+            usePreparedStatements="true"
+        />
+    </changeSet>
+</databaseChangeLog>

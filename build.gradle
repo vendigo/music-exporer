@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.7.0'
+    id 'org.springframework.boot' version '2.7.1'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'com.google.cloud.tools.appengine' version '2.4.4'
     id 'java'
@@ -34,6 +34,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-gcp-starter-sql-postgresql'
+
+    implementation 'org.liquibase:liquibase-core'
 
     runtimeOnly 'org.postgresql:postgresql'
 
