@@ -9,6 +9,8 @@ spring:
   cloud.gcp.sql:
     instance-connection-name: learngcp-353414:europe-central2:artists-db
     database-name: postgres
+  jpa:
+    generate-ddl: off
 
 ---
 spring.config.activate.on-profile: local
@@ -20,21 +22,7 @@ spring.cloud.gcp:
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-  jpa:
-    generate-ddl: off
 
 spring.liquibase.change-log: classpath:liquibase/changelog.xml
 
 server.port: 8080
-
----
-spring.config.activate.on-profile: local-postgres
-
-spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: testpassword
-  jpa:
-    generate-ddl: off
