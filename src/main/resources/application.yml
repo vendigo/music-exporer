@@ -12,17 +12,24 @@ spring:
   jpa:
     generate-ddl: off
 
+spring.liquibase.change-log: classpath:liquibase/changelog.xml
+
 ---
 spring.config.activate.on-profile: local
 
-spring.cloud.gcp:
-  sql.enabled: false
-  core.enabled: false
-
 spring:
+  cloud.gcp:
+    sql.enabled: false
+    core.enabled: false
   datasource:
     driver-class-name: org.h2.Driver
 
-spring.liquibase.change-log: classpath:liquibase/changelog.xml
-
 server.port: 8080
+
+---
+spring.config.activate.on-profile: local-postgres
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
