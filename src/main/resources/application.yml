@@ -20,7 +20,8 @@ spring.config.activate.on-profile: local
 spring:
   cloud.gcp:
     sql.enabled: false
-    core.enabled: false
+    core.enabled: true
+    storage.enabled: true
   datasource:
     driver-class-name: org.h2.Driver
 

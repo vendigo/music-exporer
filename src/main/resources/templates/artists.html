@@ -25,7 +25,7 @@
                     <td colspan="2">No artists available</td>
                 </tr>
                 <tr th:each="artist : ${artists}">
-                    <td><img th:src="${artist.picture}" th:alt="${artist.name}" /></td>
+                    <td><img th:src="${artist.imgUrl}" th:alt="${artist.name}" /></td>
                     <td><span th:text="${artist.name}">Name</span></td>
                     <td><span th:text="${artist.fansCount}">Fans</span></td>
                 </tr>

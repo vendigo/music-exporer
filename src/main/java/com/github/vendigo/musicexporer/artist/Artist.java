@@ -28,4 +28,8 @@ public class Artist {
     private String altPicture;
     @Column(name = "nb_fans")
     private Integer fansCount;
+
+    public String getImgUrl() {
+        return altPicture != null ? altPicture : picture;
+    }
 }
