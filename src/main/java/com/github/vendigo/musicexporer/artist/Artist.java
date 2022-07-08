@@ -24,6 +24,8 @@ public class Artist {
     private String name;
     @Column
     private String picture;
+    @Column(name = "alt_picture")
+    private String altPicture;
     @Column(name = "nb_fans")
     private Integer fansCount;
 }

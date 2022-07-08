@@ -24,4 +24,13 @@
             usePreparedStatements="true"
         />
     </changeSet>
+
+    <changeSet id="add-column-alt-picture" author="Dmytro Marchenko">
+        <addColumn schemaName="public" tableName="dez_artist">
+            <column
+                name="alt_picture"
+                type="varchar(255)"
+            />
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
