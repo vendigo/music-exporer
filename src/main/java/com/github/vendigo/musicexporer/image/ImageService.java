@@ -2,10 +2,12 @@ package com.github.vendigo.musicexporer.image;
 
 import com.github.vendigo.musicexporer.artist.Artist;
 import com.github.vendigo.musicexporer.artist.ArtistRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.gcp.pubsub.core.publisher.PubSubPublisherTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,12 +15,16 @@ import java.io.InputStream;
 import java.net.URL;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Slf4j
 public class ImageService {
 
     private final ArtistRepository artistRepository;
     private final UploadService uploadService;
+    private final PubSubPublisherTemplate pubSubPublisher;
+
+    @Value("${pubsub.imagesToLoad.topic.name}")
+    private String topicName;
 
     @Transactional
     public void loadAltImage(long artistId) {
@@ -50,5 +56,10 @@ public class ImageService {
     private static String buildFileName(long artistId, String imgUrl) {
         String[] parts = imgUrl.split("\\.");
         return String.format("artist-%d.%s", artistId, parts[parts.length - 1]);
+    }
+
+    public void submitMessagesForLoading() {
+        artistRepository.findArtistIdsToLoad()
+                .forEach(artistId -> pubSubPublisher.publish(topicName, artistId.toString().getBytes()));
     }
 }

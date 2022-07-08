@@ -1,2 +1,4 @@
 spring.cloud.gcp.sql.enabled: false
 spring.liquibase.enabled: false
+
+pubsub.imagesToLoad.topic.name: TestTopic
