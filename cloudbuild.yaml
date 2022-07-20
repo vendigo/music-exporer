@@ -1,12 +1,7 @@
 steps:
   - name: 'gradle:7.5.0-jdk17-alpine'
-    args:
-      - build
+    args: ['build']
     entrypoint: gradle
-  - name: gcr.io/cloud-builders/docker
-    args:
-      - build
-      - '--tag=gcr.io/$PROJECT_ID/music-explorer'
-      - .
-images:
-  - gcr.io/$PROJECT_ID/music-explorer
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--tag=gcr.io/$PROJECT_ID/music-explorer', '.']
+images: ['gcr.io/$PROJECT_ID/music-explorer']
