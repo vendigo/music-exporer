@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gcp.pubsub.core.publisher.PubSubPublisherTemplate;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,7 @@ import java.net.URL;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Profile("!test")
 public class ImageService {
 
     private final ArtistRepository artistRepository;

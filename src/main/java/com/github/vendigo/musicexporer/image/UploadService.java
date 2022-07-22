@@ -1,6 +1,7 @@
 package com.github.vendigo.musicexporer.image;
 
 import org.springframework.cloud.gcp.core.GcpProjectIdProvider;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import com.google.cloud.storage.BlobId;
@@ -12,6 +13,7 @@ import lombok.SneakyThrows;
 
 @Service
 @AllArgsConstructor
+@Profile("!test")
 public class UploadService {
 
     private static final String LINK_DOMAIN = "https://storage.googleapis.com";
