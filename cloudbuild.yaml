@@ -1,7 +1,9 @@
 steps:
   - name: 'gradle:7.5.0-jdk17-alpine'
-    args: ['build']
+    args: [ 'build' ]
     entrypoint: gradle
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '--tag=europe-central2-docker.pkg.dev/$PROJECT_ID/music-explorer-repo/music-explorer', '.']
-images: ['europe-central2-docker.pkg.dev/$PROJECT_ID/music-explorer-repo/music-explorer']
+    args: [ 'build', '--tag=europe-central2-docker.pkg.dev/$PROJECT_ID/music-explorer-repo/music-explorer', '.' ]
+  - name: "gcr.io/cloud-builders/gke-deploy"
+    args: ['run', '--filename=k8s', '--location=europe-central2', '--cluster=music-explorer-cluster']
+images: [ 'europe-central2-docker.pkg.dev/$PROJECT_ID/music-explorer-repo/music-explorer' ]

@@ -1,13 +1,14 @@
 package com.github.vendigo.musicexporer.image;
 
-import com.google.cloud.storage.Blob;
+import org.springframework.cloud.gcp.core.GcpProjectIdProvider;
+import org.springframework.stereotype.Service;
+
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
+
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
-import org.springframework.cloud.gcp.core.GcpProjectIdProvider;
-import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor

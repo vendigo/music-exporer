@@ -1,0 +1,40 @@
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "music-explorer"
+  namespace: "default"
+  labels:
+    app: "music-explorer"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "music-explorer"
+  template:
+    metadata:
+      labels:
+        app: "music-explorer"
+    spec:
+      serviceAccountName: 'music-explorer-ksa'
+      containers:
+        - name: "music-explorer"
+          image: "europe-central2-docker.pkg.dev/learngcp-353414/music-explorer-repo/music-explorer"
+          env:
+            - name: "PORT"
+              valueFrom:
+                configMapKeyRef:
+                  key: "PORT"
+                  name: "music-explorer-config"
+        - name: cloud-sql-proxy
+          image: gcr.io/cloudsql-docker/gce-proxy:1.31.1
+          command:
+            - "/cloud_sql_proxy"
+            # - "-ip_address_types=PRIVATE"
+            - "-log_debug_stdout"
+            - "-instances=learngcp-353414:europe-central2:artists-db=tcp:5432"
+          securityContext:
+            runAsNonRoot: true
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "1"
