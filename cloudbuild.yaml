@@ -3,5 +3,5 @@ steps:
     args: ['build']
     entrypoint: gradle
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '--tag=gcr.io/$PROJECT_ID/music-explorer', '.']
-images: ['gcr.io/$PROJECT_ID/music-explorer']
+    args: ['build', '--tag=europe-central2-docker.pkg.dev/$PROJECT_ID/music-explorer-repo/music-explorer', '.']
+images: ['europe-central2-docker.pkg.dev/$PROJECT_ID/music-explorer-repo/music-explorer']
