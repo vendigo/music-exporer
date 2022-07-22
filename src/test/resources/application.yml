@@ -3,6 +3,7 @@ spring:
     sql.enabled: false
     core.enabled: false
     storage.enabled: false
+    pubsub.enabled: false
 
 
 spring.liquibase.enabled: false

@@ -26,3 +26,5 @@ music-explorer@learngcp-353414.iam.gserviceaccount.com
 kubectl annotate serviceaccount \
 music-explorer-ksa \
 iam.gke.io/gcp-service-account=music-explorer@learngcp-353414.iam.gserviceaccount.com
+
+gcloud projects add-iam-policy-binding learngcp-353414 --member=serviceAccount:94920321678@cloudbuild.gserviceaccount.com --role=roles/container.developer
