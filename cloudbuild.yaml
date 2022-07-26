@@ -3,7 +3,7 @@ steps:
     args: [ 'build' ]
     entrypoint: gradle
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '--tag=europe-central2-docker.pkg.dev/$PROJECT_ID/music-explorer-repo/music-explorer:$SHORT_SHA', '.' ]
+    args: [ 'build', '--tag=europe-central2-docker.pkg.dev/$PROJECT_ID/music-explorer-repo/music-explorer', '.' ]
   - name: "gcr.io/cloud-builders/docker"
     args: [ "push", "europe-central2-docker.pkg.dev/$PROJECT_ID/music-explorer-repo/music-explorer" ]
   - name: "gcr.io/cloud-builders/gke-deploy"
