@@ -4,11 +4,11 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: '"8&*$c}?2%U?j>Fy'
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   cloud.gcp.sql:
-    instance-connection-name: learngcp-353414:europe-central2:artists-db
-    database-name: postgres
+    instance-connection-name: ${DB_CONNECTION_NAME}
+    database-name: ${DB_NAME}
   jpa:
     generate-ddl: off
 
