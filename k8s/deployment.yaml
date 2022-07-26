@@ -29,7 +29,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: "db-secret"
-                   key: "db-username"
+                  key: "db-username"
             - name: "DB_PASSWORD"
               valueFrom:
                 secretKeyRef:
