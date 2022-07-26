@@ -1,8 +1,8 @@
 ## TODOs
 
-1. Deploy newly created image
+1. Deploy newly created image +
 2. Connect to SQL via private IP
-3. Move passwords to secrets
+3. Move passwords to secrets +
 4. Configure SQL migration
 5. Complete init script
 6. Draw diagrams

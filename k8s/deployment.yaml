@@ -49,7 +49,7 @@ spec:
           image: gcr.io/cloudsql-docker/gce-proxy:1.31.1
           command:
             - "/cloud_sql_proxy"
-            # - "-ip_address_types=PRIVATE"
+            - "-ip_address_types=PRIVATE"
             - "-log_debug_stdout"
             - "-instances=learngcp-353414:europe-central2:artists-db=tcp:5432"
           securityContext:
