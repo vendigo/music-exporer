@@ -18,7 +18,7 @@ spec:
       serviceAccountName: 'music-explorer-ksa'
       containers:
         - name: "music-explorer"
-          image: "gcr/learngcp-353414/music-explorer"
+          image: "europe-central2-docker.pkg.dev/learngcp-353414/music-explorer-repo/music-explorer"
           env:
             - name: "PORT"
               valueFrom:
