@@ -6,6 +6,8 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+    tomcat:
+      max-active: 3
   cloud.gcp.sql:
     instance-connection-name: ${DB_CONNECTION_NAME}
     database-name: ${DB_NAME}
