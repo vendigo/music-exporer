@@ -5,7 +5,4 @@ spring:
     storage.enabled: false
     pubsub.enabled: false
 
-
-spring.liquibase.enabled: false
-
 pubsub.imagesToLoad.topic.name: TestTopic

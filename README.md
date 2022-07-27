@@ -46,3 +46,14 @@ music-explorer-ksa \
 iam.gke.io/gcp-service-account=music-explorer@learngcp-353414.iam.gserviceaccount.com
 
 gcloud projects add-iam-policy-binding learngcp-353414 --member=serviceAccount:94920321678@cloudbuild.gserviceaccount.com --role=roles/container.developer
+
+gcloud projects add-iam-policy-binding learngcp-353414 --member=serviceAccount:94920321678@cloudbuild.gserviceaccount.com --role=roles/secretmanager.viewer
+
+Useful article: https://dev.to/lehauchicha/google-cloud-platform-deploy-simple-java-spring-boot-application-4f85
+
+gradle update -PliquibasePassword=liquibasePassword -PdbHost=localhost
+
+GRANT ALL
+ON ALL TABLES
+IN SCHEMA "public"
+TO "liquibaseUser";

@@ -1,7 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.7.1'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'com.google.cloud.tools.appengine' version '2.4.4'
+    id "org.liquibase.gradle" version "2.1.1"
     id 'java'
 }
 
@@ -38,7 +38,6 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-gcp-starter-storage'
     implementation 'org.springframework.cloud:spring-cloud-gcp-starter-pubsub'
 
-    implementation 'org.liquibase:liquibase-core'
     implementation 'commons-io:commons-io:2.11.0'
 
     runtimeOnly 'org.postgresql:postgresql'
@@ -46,14 +45,12 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    liquibaseRuntime 'org.liquibase:liquibase-core'
+    liquibaseRuntime 'org.postgresql:postgresql'
+    liquibaseRuntime 'info.picocli:picocli:4.6.3'
+
     implementation 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
-
-appengine {
-    appengine.deploy.projectId = 'GCLOUD_CONFIG'
-    appengine.deploy.version = 'GCLOUD_CONFIG'
-    appengine.stage.artifact = "build/libs/${project.name}-${project.version}.jar"
 }
 
 tasks.named('test') {
@@ -62,4 +59,17 @@ tasks.named('test') {
 
 jar {
     enabled = false
+}
+
+if (project.hasProperty("liquibasePassword")) {
+    liquibase {
+        activities {
+            main {
+                changelogFile "src/main/resources/liquibase/changelog.xml"
+                url "jdbc:postgresql://localhost/postgres"
+                username 'liquibaseUser'
+                password "$liquibasePassword"
+            }
+        }
+    }
 }
