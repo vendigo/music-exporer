@@ -33,4 +33,14 @@
             />
         </addColumn>
     </changeSet>
+
+    <changeSet id="add more artists" author="Dmytro Marchenko">
+        <loadData
+            file="new-artists.csv"
+            schemaName="public"
+            tableName="dez_artist"
+            relativeToChangelogFile="true"
+            usePreparedStatements="true"
+        />
+    </changeSet>
 </databaseChangeLog>
